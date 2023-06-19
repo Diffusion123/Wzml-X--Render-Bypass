@@ -1,0 +1,43 @@
+name: Manually Deploy to Heroku
+
+on: workflow_dispatch
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+
+        with:
+
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+
+          usedocker: true
+
+          docker_heroku_process_type: web
+
+          stack: "container"
+
+          region: "us"
+
+        env:
+
+          HD_BOT_TOKEN: ${{secrets.BOT_TOKEN}}
+
+          HD_OWNER_ID: "5755368058"
+
+          HD_TELEGRAM_API_ID: "2381992"
+
+          HD_TELEGRAM_API_HASH: "661ce2469998288dbac1147e10ff4d44"
+
+          HD_DATABASE_URL: "mongodb+srv://hsakalu:41044104@cluster0.jug7a3c.mongodb.net/?retryWrites=true&w=majority"
