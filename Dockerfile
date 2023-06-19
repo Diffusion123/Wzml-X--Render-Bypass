@@ -1,4 +1,4 @@
-FROM hsakalu/rclone:latest
+FROM hsakal/samm:latest
 WORKDIR /usr/src/app
 
 RUN chmod 777 /usr/src/app
